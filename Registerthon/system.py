@@ -86,7 +86,7 @@ class App(Tk):
         # JANELA
         janela_cadastro = Toplevel(app)
         janela_cadastro.geometry('602x402')
-        janela_cadastro.title('0.1.0 Registerthon')
+        janela_cadastro.title('Registerthon 0.1.1')
         janela_cadastro.configure(background='blue')
         janela_cadastro.resizable(False, False)
 

@@ -240,7 +240,7 @@ class Manipulador:
         return valores
 
     @classmethod
-    def receber_app(cls, app=''):
+    def receber_app(cls, app=None):
         """
         :param app: Recebe o objeto app
         :return: Retorna o objeto
@@ -359,7 +359,7 @@ class Manipulador:
             Label(dados_endereco, text='Estado:', font='Arial 10',
                   bg='MediumSeaGreen').grid(column=2, row=2, sticky=W, pady=5)
 
-            # LABEL(OUTPUT)--------------------
+            # TEXT(OUTPUT)--------------------
             # Coluna 1
             output_rua = Text(dados_endereco, font='Arial 9', relief=FLAT, width=30, height=1)
             output_rua.insert(INSERT, dados[6])
@@ -403,7 +403,7 @@ class Manipulador:
         """
         :param outputs: Recebe os inputs dos widgets tipo Texts na primeira vez em que
                         que o usuário clicar no botão 'Obter'
-        :param cpf: Recebe o input do 'text_cpf' na primeira vez em que o usuário clicar
+        :param cpf: Recebe o input do 'output_cpf' na primeira vez em que o usuário clicar
                     no botão 'Obter'
         :param saved: Caso o restaurar_dados seja efetuado após uma alteração de dados
                       em que não houve mensagem de erro, o valor será verdadeiro.
@@ -431,7 +431,7 @@ class Manipulador:
     def realizar_edicao(cls, *outputs, cpf):
         """
         :param outputs: Recebe os inputs dos widgets tipo Text
-        :param cpf: Recebe o input do text_cpf na primeira vez
+        :param cpf: Recebe o input do output_cpf na primeira vez
                     em que o usuário clicar no botão 'Obter'
         -Faz a alteração dos dados no banco de dados utilizando
          a variável 'cpf' mudando os valores com os outputs recebidos,

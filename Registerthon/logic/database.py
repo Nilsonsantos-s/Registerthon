@@ -44,7 +44,6 @@ class GuardaDados:
         :param dados: Recebe os dados das entradas
         -Insere os dados no banco de dados
         """
-        print(dados)
         GuardaDados.comando.execute(
             f"insert into pessoas values('{dados[0]}', '{dados[1]}', '{dados[2]}', '{dados[3]}',"
             f" '{dados[4]}', '{dados[5]}', '{dados[6]}', '{dados[7]}', '{dados[8]}', '{dados[9]}',"
@@ -70,7 +69,6 @@ class GuardaDados:
         """
         GuardaDados.comando.execute(f"select * from pessoas where cpf = {cpf};")
         resultado = GuardaDados.comando.fetchall()
-        print('TESTE', resultado)
         return resultado
 
     @classmethod
@@ -82,8 +80,6 @@ class GuardaDados:
          cpf se o tamanho da coleção recebida for maior que 1.
         -Caso contrário, exclui apenas o primeiro item da coleção.
         """
-        print(cpfs)
-        print(len(cpfs))
         if len(cpfs) == 1:
             GuardaDados.comando.execute(f"delete from pessoas where cpf = '{cpfs[0]}';")
             GuardaDados.conexao.commit()
@@ -96,7 +92,7 @@ class GuardaDados:
     def alterar_dados_banco(cls, outputs, cpf):
         """
         :param outputs: Pega o input dos Text widgets
-        :param cpf: Recebe o cpf do text widget 'text_cpf' no
+        :param cpf: Recebe o cpf do text widget 'output_cpf' no
                     momento em que o usuário clica no botão
                     'Obter'
         -Faz a alteração dos dados utilizando o cpf e os outputs
