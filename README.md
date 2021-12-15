@@ -31,6 +31,6 @@ Verifique se a conexão com o MySQL está ativa. Após isso:
 <ol>
     <li>Abra o CMD ou PowerShell</li>
     <li>Entre no repositório, na pasta "Registerthon"</li>
-    <li>Rode o comando: ```python system.py```</li>
+    <li>Rode o comando: <code>python system.py</code></li>
 </ol>
 
