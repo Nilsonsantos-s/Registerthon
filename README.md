@@ -4,11 +4,11 @@ Sistema de cadastro integrado com banco de dados MySQL e com interface gráfica 
 
 ___
 
-- ## Versão 0.1.1 ##
+- ## Versão 0.1.2 ##
 
 Bug resolvido:
 
-*Correção de incompatibilidade quando, durante a execução do programa em um Terminal, o usuário clicava no botão 'Obter' após selecionar um registro e a janela que mostra os dados não abria.
+*Correção da não atualização do nome no canto superior esquerdo da tela e no título da janela, quando o usuário salvava uma edição.
 
 - ## Como usar
 ### Instalando

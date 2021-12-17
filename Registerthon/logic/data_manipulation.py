@@ -18,6 +18,8 @@ class Manipulador:
     """
     main_contador = 0
     copia_arvore = ''
+    painel_dados = ''
+    janela_registro = ''
     cpf = ''
 
     @classmethod
@@ -274,23 +276,23 @@ class Manipulador:
                 'ERRO', message='Selecione um registro a ser obtido')
         else:
             app = Manipulador.receber_app()
-            janela_registro = Toplevel(app)
-            janela_registro.title(dados[1])
-            janela_registro.configure(bg='DarkGoldenrod')
-            janela_registro.geometry('602x402')
-            janela_registro.resizable(False, False)
+            Manipulador.janela_registro = Toplevel(app)
+            Manipulador.janela_registro.title(dados[1])
+            Manipulador.janela_registro.configure(bg='DarkGoldenrod')
+            Manipulador.janela_registro.geometry('602x402')
+            Manipulador.janela_registro.resizable(False, False)
 
             # LABELFRAME
-            painel_dados = LabelFrame(janela_registro, text=dados[1]+' '+dados[2],
+            Manipulador.painel_dados = LabelFrame(Manipulador.janela_registro, text=dados[1]+' '+dados[2],
                                       bg='Teal', borderwidth=3, font='Arial 14 bold')
-            painel_dados.place(x=0, y=10, width=600, height=400)
+            Manipulador.painel_dados.place(x=0, y=10, width=600, height=400)
 
-            dados_principal = LabelFrame(janela_registro, text='Dados Principais',
+            dados_principal = LabelFrame(Manipulador.janela_registro, text='Dados Principais',
                                          font='Arial 15', borderwidth=2, fg='gold',
                                          bg='MediumSeaGreen', relief=RAISED)
             dados_principal.place(x=5, y=60, width=570, height=150)
 
-            dados_endereco = LabelFrame(janela_registro, text='Endereço',
+            dados_endereco = LabelFrame(Manipulador.janela_registro, text='Endereço',
                                         font='Arial 15', borderwidth=2,
                                         fg='gold', bg='MediumSeaGreen',
                                         relief=RAISED)
@@ -386,13 +388,13 @@ class Manipulador:
                 Manipulador.cpf = output_cpf.get('1.0', 'end')
 
             # BUTTON--------------------
-            Button(janela_registro, text='Restaurar Dados', relief=SOLID,
+            Button(Manipulador.janela_registro, text='Restaurar Dados', relief=SOLID,
                    command=lambda: Manipulador.restaurar_dados(
                         output_cpf, output_nome, output_sobrenome, output_email, output_telefone,
                         output_celular, output_rua, output_numero, output_bairro, output_cidade,
                         output_estado, cpf=Manipulador.cpf)).place(x=390, y=30)
 
-            Button(janela_registro, text='Salvar Edição', relief=SOLID,
+            Button(Manipulador.janela_registro, text='Salvar Edição', relief=SOLID,
                    command=lambda: Manipulador.realizar_edicao(
                         output_cpf, output_nome, output_sobrenome, output_email, output_telefone,
                         output_celular, output_rua, output_numero, output_bairro, output_cidade,
@@ -419,8 +421,9 @@ class Manipulador:
         else:
             Manipulador.cpf = cpf_alterado
             dados = GuardaDados.carregar_linha_unica(cpf_alterado)
+            Manipulador.painel_dados.configure(text=dados[0][1]+' '+dados[0][2])
+            Manipulador.janela_registro.title(dados[0][1])
         dados = dados[0]
-
         contador = 0
         for output in outputs:
             output.delete('1.0', 'end')
