@@ -4,6 +4,12 @@ Sistema de cadastro integrado com banco de dados MySQL e com interface gráfica 
 
 ___
 
+- ## Versão 0.1.1 ##
+
+Bug resolvido:
+
+*Correção de incompatibilidade quando, durante a execução do programa em um Terminal, o usuário clicava no botão 'Obter' após selecionar um registro e a janela que mostra os dados não abria.
+
 - ## Como usar
 ### Instalando
 Clone este repositório:
@@ -33,4 +39,3 @@ Verifique se a conexão com o MySQL está ativa. Após isso:
     <li>Entre no repositório, na pasta "Registerthon"</li>
     <li>Rode o comando: <code>python system.py</code></li>
 </ol>
-
