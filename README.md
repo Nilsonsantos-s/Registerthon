@@ -4,11 +4,15 @@ Sistema de cadastro integrado com banco de dados MySQL e com interface gráfica 
 
 ___
 
-- ## Versão 0.1.2 ##
+- ## Versão 0.2.2 ##
 
-Bug resolvido:
+Novos recursos:
 
-*Correção da não atualização do nome no canto superior esquerdo da tela e no título da janela, quando o usuário salvava uma edição.
+*Botão 'Sobre' no Gerenciador Registerthon;
+
+*Janela 'Sobre Registerthon';
+
+*Ícone personalizado adicionado às janelas.
 
 - ## Como usar
 ### Instalando

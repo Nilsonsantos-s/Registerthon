@@ -13,8 +13,8 @@
 from tkinter import Tk, Button, Toplevel,LabelFrame,\
                     RAISED, Frame, Label, Entry,\
                     GROOVE, SOLID, W, CENTER, E
-from tkinter import ttk
-from tkinter import messagebox
+from tkinter import ttk, messagebox, PhotoImage
+import webbrowser
 from logic.data_manipulation import Manipulador
 from logic.database import GuardaDados
 
@@ -31,7 +31,7 @@ class App(Tk):
 
     def __init__(self):
         Tk.__init__(self)
-        self.title('Gerenciador - Registerthon')
+        self.title('Gerenciador Registerthon')
         self.geometry('400x120')
         self.resizable(False, False)
         self.configure(bg='cornflowerblue')
@@ -52,11 +52,81 @@ class App(Tk):
     @classmethod
     def criar_widgets_app(cls):
         """
-        -Cria o botão no gerenciador Registerthon que serve para inicializar o sistema.
+        -Cria o botão que serve para inicializar o sistema no gerenciador Registerthon
+        -Cria o ícone das janelas
         """
         iniciar = Button(app, text='Iniciar', command=app.criar_widgets_cadastro,
                          font='Arial 10 bold', borderwidth=2, bg='gold')
         iniciar.grid(column=0, row=0, pady=94, ipadx=40)
+
+        sobre = Button(app, text='Sobre', font='Arial 10 bold',
+                       borderwidth=2, bg='gold', command=app.criar_widgets_sobre)
+        sobre.grid(column=1, row=0, padx=20, ipadx=40)
+
+        app.iconphoto(True, PhotoImage(file='icons/favicon32.png'))
+
+    @classmethod
+    def callback(cls, url):
+        """
+        -Recebe uma URL e pede a requisição.
+        """
+        webbrowser.open_new(url)
+
+    @classmethod
+    def criar_widgets_sobre(cls):
+        """
+        -Cria a janela 'Sobre Registerthon' junto com seus widgets.
+        """
+        # JANELA
+        janela_sobre = Toplevel(app)
+        janela_sobre.geometry('602x402')
+        janela_sobre.title('Sobre Registerthon')
+        janela_sobre.configure(background='blue')
+        janela_sobre.resizable(False, False)
+
+        # NOTEBOOK
+        gerenciador_abas = ttk.Notebook(janela_sobre)
+        gerenciador_abas.place(x=0, y=0, width=602, height=402)
+
+        # FRAME
+        painel_sobre = Frame(gerenciador_abas, borderwidth=2, bg='Teal')
+        painel_sobre.place(x=0, y=40, width=600, height=400)
+
+        gerenciador_abas.add(painel_sobre, text='Sobre')
+
+        # LABEL
+        Label(painel_sobre, text='Registerthon 0.2.2 - é um sistema de cadastro simples'
+                                 ' desenvolvido pelo estudante Nilson Santos. O programa'
+                                 ' permite registrar, alterar, deletar e pesquisar'
+                                 ' cadastros.',
+              font='pacifico 16 bold', bg='springgreen', wraplength=500, fg='black',
+              justify='left').pack(pady=10)
+
+        acessar_projeto = Label(painel_sobre, text='Acessar Projeto', cursor='hand2',
+                                font='Arial 14 underline bold', fg='blue', bg='teal')
+        acessar_projeto.pack(side='top', anchor='nw', ipadx=50, ipady=10)
+        acessar_projeto.bind(
+            '<Button-1>', lambda e: app.callback('https://github.com/Nilsonsantos-s/Registerthon'))
+
+        Label(painel_sobre, text='MINHAS REDES', font='Arial 15 bold',
+              bg='gold').pack(side='top', anchor='ce', pady=10, fill='both')
+
+        github = Label(painel_sobre, text='Github', cursor='hand2',
+                  font='Arial 13 underline bold', bg='teal')
+        github.pack(side='top', anchor='ce', ipadx=50, ipady=10)
+        github.bind('<Button-1>',
+                    lambda e: app.callback('https://github.com/Nilsonsantos-s'))
+
+        linkedin = Label(painel_sobre, text='Linkedin', bg='teal',
+                  cursor='hand2', font='Arial 13 underline bold')
+        linkedin.pack(side='top', anchor='ce', ipadx=50, ipady=10)
+        linkedin.bind('<Button-1>',
+                      lambda e: app.callback('https://www.linkedin.com/in/nilson-santos-7306a9210/'))
+
+        email = Label(painel_sobre, text='E-mail: Nilsonc.s@outlook.com',font='Arial 13 underline bold', bg='teal',
+                  cursor='hand2')
+        email.pack(side='top', anchor='ce', ipadx=50, ipady=10)
+        email.bind('<Button-1>', lambda e: app.callback('mailto:nilsonc.s@outlook.com'))
 
     @classmethod
     def criar_widgets_cadastro(cls):
@@ -86,7 +156,7 @@ class App(Tk):
         # JANELA
         janela_cadastro = Toplevel(app)
         janela_cadastro.geometry('602x402')
-        janela_cadastro.title('Registerthon 0.1.2')
+        janela_cadastro.title('Registerthon 0.2.2')
         janela_cadastro.configure(background='blue')
         janela_cadastro.resizable(False, False)
 
